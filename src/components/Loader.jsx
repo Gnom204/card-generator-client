@@ -11,7 +11,7 @@ function Loader({ msg }) {
           Loading...
         </span>
       </div>
-      <span>{msg && <p>{msg}</p>}</span>
+      <span>{msg && <p className="ml-2 text-center">{msg}</p>}</span>
     </>
   );
 }

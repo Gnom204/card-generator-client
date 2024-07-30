@@ -4,7 +4,10 @@ import { fetchGetCards } from "../store/features/card/cardSlice";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/configure";
 import trash from "../images/trash.svg";
-import { fetchDeleteCard } from "../store/features/lesson/lessonSlice";
+import {
+  fetchDeleteCard,
+  fetchGetLessons,
+} from "../store/features/lesson/lessonSlice";
 
 function Deck({ deck }) {
   const dispatch = useDispatch();

@@ -27,10 +27,10 @@ function ListOfLessons() {
         <ul className="flex items-center justify-center flex-wrap w-11З/12">
           {decks.cardsWithLang.map((deck) => (
             <Deck key={deck._id} deck={deck} />
-          ))}
+          ))}{" "}
+          <AddCard />
         </ul>
       )}
-      <AddCard />
     </>
   );
 }

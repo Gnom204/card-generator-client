@@ -77,7 +77,11 @@ function CreateCard() {
       >
         <div className="flex flex-col items-center justify-center border-4 p-10 border-dashed">
           {isLoading ? (
-            <Loader msg={"Генерируем превью"} />
+            <Loader
+              msg={
+                "Ждем пока Индусы нарисуют превью. Примерное время ожидания: 40 секунд"
+              }
+            />
           ) : preview.preview !== null ? (
             <div className="relative">
               <img
