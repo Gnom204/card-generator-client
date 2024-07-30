@@ -46,7 +46,7 @@ function CreateCard() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (lessonName === "") {
+    if (lessonName === "" || preview.preview === null) {
       setEmpty(true);
     } else {
       dispatch(
@@ -77,7 +77,7 @@ function CreateCard() {
       >
         <div className="flex flex-col items-center justify-center border-4 p-10 border-dashed">
           {isLoading ? (
-            <Loader />
+            <Loader msg={"Генерируем превью"} />
           ) : preview.preview !== null ? (
             <div className="relative">
               <img
@@ -115,7 +115,8 @@ function CreateCard() {
                 </p>{" "}
                 {empty && (
                   <p className="text-red-600">
-                    Чтобы сгенерировать картинку, нужно заполнить поле
+                    Чтобы сгенерировать картинку, нужно заполнить поле или
+                    сгенерировать превью
                   </p>
                 )}
               </div>

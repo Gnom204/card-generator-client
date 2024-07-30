@@ -9,7 +9,9 @@ function Layout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    dispatch(getMe());
+    if (localStorage.getItem("token")) {
+      dispatch(getMe());
+    }
   }, []);
   return (
     <>

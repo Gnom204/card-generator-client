@@ -10,7 +10,9 @@ function LearnRoom() {
   const { lessonId } = useParams();
   const dispatch = useDispatch();
   const [isDisabled, setIsDisabled] = useState(true);
+  const [checkDisabled, setCheckDisabled] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
+  const [isEntered, setIsEntered] = useState(false);
   const [isGo, setIsGo] = useState(false);
   const [translateVariant, setTranslateVariant] = useState("");
   const [currentCards, setCurrentCards] = useState([]);
@@ -51,6 +53,7 @@ function LearnRoom() {
     console.log(card);
     setIsDisabled(false);
     if (card.translate.toLowerCase() === translateVariant.toLowerCase()) {
+      setCheckDisabled(true);
       setIsGo(true);
       // console.log("correct");
       setIsCorrect(true);
@@ -60,6 +63,7 @@ function LearnRoom() {
       // console.log({ currentCards, currentCard, filteredCards });
       setTranslateVariant("");
     } else {
+      setCheckDisabled(true);
       setIsGo(true);
       setErrorCounter(errorCounter + 1);
       setIsError(true);
@@ -76,10 +80,13 @@ function LearnRoom() {
   };
 
   const getNextCard = () => {
+    console.log("getnext");
     setIsCorrect(false);
+    setCheckDisabled(false);
     setIsError(false);
     setIsEmpty(false);
     setIsDisabled(true);
+    setIsEntered(false);
     filteredCards = currentCards.filter((c) => c._id !== currentCard._id);
     const newCard =
       filteredCards[Math.floor(Math.random() * filteredCards.length)];
@@ -87,13 +94,13 @@ function LearnRoom() {
     // console.log({ newCard, filteredCards });
   };
 
-  const clickHandler = () => {
-    if (currentCards.length === 0) {
-      alert("Все карты изучены");
-      return;
-    }
+  const clickHandler = (e) => {
+    e.preventDefault();
+    setIsEntered(true);
+
     setIsStarted(true);
     getCurrentCards(currentCard);
+    console.log(isEntered, "clickHandler");
   };
   return (
     <div className="flex items-center justify-center flex-col min-h-screen py-8 bg-gray-50">
@@ -135,8 +142,8 @@ function LearnRoom() {
                       alt=""
                     />{" "}
                     {isError ? (
-                      <p className="text-red-500 text-2xl font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[-70%]">
-                        Правильный ответ: {currentCard.translate}
+                      <p className="text-red-500 bg-red-100 py-1 px-4 rounded-full text-lg font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[-200%]">
+                        {currentCard.translate}
                       </p>
                     ) : null}
                   </>
@@ -145,33 +152,42 @@ function LearnRoom() {
               <h2 className="text-3xl font-bold mt-4">{currentCard.name}</h2>
             </div>
           )}
-          <input
-            onChange={(e) => setTranslateVariant(e.target.value)}
-            type="text"
-            value={translateVariant}
-            placeholder="Введите перевод"
-            className={
-              isEmpty
-                ? "form-input mt-1 block w-full px-3 py-2 border border-red-400 rounded-md text-lg leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out"
-                : "form-input mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-lg leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out"
-            }
-          />
-          {isEmpty ? <p className="text-red-500">Заполните поле</p> : null}
-          <div className="flex space-x-4">
-            <button
-              onClick={clickHandler}
-              className="text-lg px-6 py-3 bg-green-600 rounded-md text-white transition duration-150 ease-in-out hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-800"
-            >
-              Проверить
-            </button>
-            <button
-              disabled={isDisabled}
-              onClick={getNextCard}
-              className="disabled:bg-gray-400 text-lg px-6 py-3 bg-blue-600 rounded-md text-white transition duration-150 ease-in-out hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-800"
-            >
-              Далее
-            </button>
-          </div>
+          <form
+            className="space-y-4"
+            onSubmit={isEntered ? () => getNextCard() : (e) => clickHandler(e)}
+          >
+            <input
+              onChange={(e) => {
+                setTranslateVariant(e.target.value);
+                setIsEmpty(false);
+              }}
+              type="text"
+              value={translateVariant}
+              placeholder="Введите перевод"
+              className={
+                isEmpty
+                  ? "form-input mt-1 block w-full px-3 py-2 border border-red-400 rounded-md text-lg leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out"
+                  : "form-input mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-lg leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out"
+              }
+            />
+            {isEmpty ? <p className="text-red-500">Заполните поле</p> : null}
+            <div className="flex space-x-4">
+              <button
+                onClick={clickHandler}
+                disabled={checkDisabled}
+                className="disabled:bg-gray-400 text-lg px-6 py-3 bg-green-600 rounded-md text-white transition duration-150 ease-in-out hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-800"
+              >
+                Проверить
+              </button>
+              <button
+                disabled={isDisabled}
+                onClick={getNextCard}
+                className="disabled:bg-gray-400 text-lg px-6 py-3 bg-blue-600 rounded-md text-white transition duration-150 ease-in-out hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-800"
+              >
+                Далее
+              </button>
+            </div>
+          </form>
         </div>
       )}
     </div>

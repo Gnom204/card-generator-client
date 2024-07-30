@@ -18,10 +18,6 @@ function DefaultCardWithInput({ card }) {
   const dispatch = useDispatch();
   const { lessonId } = useParams();
 
-  useEffect(() => {
-    console.log(card);
-  }, []);
-
   const clickHandler = () => {
     if (name === "" || trans === "") {
       setEmpty(true);
@@ -30,7 +26,6 @@ function DefaultCardWithInput({ card }) {
       setIsLoading(true);
       dispatch(generatePreview(name))
         .then((action) => {
-          console.log(action);
           setIsLoading(false);
           setPreview(`${BASE_URL}/${action.payload.preview}`);
           dispatch(
@@ -49,14 +44,14 @@ function DefaultCardWithInput({ card }) {
   };
   const clickNameHandler = (e) => {
     e.stopPropagation();
+    setEmpty(false);
     setNameIsDisabled(!nameIsDisabled);
-    console.log({ nameIsDisabled, name });
   };
 
   const clickTransHandler = (e) => {
     e.stopPropagation();
+    setEmpty(false);
     setTransIsDisabled(!transIsDisabled);
-    console.log({ transIsDisabled, trans });
   };
   return (
     <div className="flex gap-4 items-center shadow-md p-4 mb-6 w-">
