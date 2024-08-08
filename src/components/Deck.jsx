@@ -38,7 +38,7 @@ function Deck({ deck }) {
         className="w-64 h-96 mx-2 my-2 cursor-pointer  justify-center hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 flex flex-col rounded-lg border border-gray-200 shadow-md p-4"
       >
         <img
-          src={BASE_URL + "/" + deck.preview}
+          src={BASE_URL + "/uploads/" + deck.preview}
           alt={deck.lessonName}
           className="w-full h-48 mb-4 object-cover rounded-t-lg"
         />

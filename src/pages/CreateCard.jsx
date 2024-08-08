@@ -86,7 +86,7 @@ function CreateCard() {
             <div className="relative">
               <img
                 className="max-w-full relative"
-                src={`${BASE_URL}/${preview.preview.preview}`}
+                src={`${BASE_URL}/uploads/${preview.preview.preview}`}
                 alt="Превью"
               />
               <button

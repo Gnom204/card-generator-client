@@ -27,7 +27,7 @@ function DefaultCardWithInput({ card }) {
       dispatch(generatePreview(name))
         .then((action) => {
           setIsLoading(false);
-          setPreview(`${BASE_URL}/${action.payload.preview}`);
+          setPreview(`${BASE_URL}/uploads/${action.payload.preview}`);
           dispatch(
             fetchCreateCard({
               name,
@@ -88,7 +88,7 @@ function DefaultCardWithInput({ card }) {
       <div>
         {preview || card.image ? (
           <img
-            src={card.image ? BASE_URL + "/" + card.image : preview}
+            src={card.image ? BASE_URL + "/uploads/" + card.image : preview}
             alt="card"
             className="w-24 h-24"
           />
