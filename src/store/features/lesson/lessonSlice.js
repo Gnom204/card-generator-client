@@ -36,7 +36,7 @@ export const fetchDeleteCard = createAsyncThunk(
 export const fetchGetLessons = createAsyncThunk(
   "cards/fetchGetLessons",
   (_, thunkAPI) => {
-    return fetch("http://localhost:4000/api/cards", {
+    return fetch(BASE_URL + "/api/cards", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ export const fetchGetLessons = createAsyncThunk(
 export const fetchCreateDeck = createAsyncThunk(
   "cards/fetchCreateDeck",
   (cardData, thunkAPI) => {
-    fetch("http://localhost:4000/api/cards", {
+    fetch(BASE_URL + "/api/cards", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

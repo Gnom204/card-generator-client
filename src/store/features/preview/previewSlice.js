@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { setError } from "../error/errorSlice";
+import { BASE_URL } from "../../../utils/configure";
 
 export const generatePreview = createAsyncThunk(
   "preview/generatePreview",
   (prompt, thunkAPI) => {
-    return fetch("http://localhost:4000/api/cards/upload", {
+    return fetch(BASE_URL + "/api/cards/upload", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

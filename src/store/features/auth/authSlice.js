@@ -41,7 +41,7 @@ export const registerUser = createAsyncThunk(
   "auth/register",
   (userData, thunkAPI) => {
     console.log({ userData });
-    return fetch("http://localhost:4000/api/auth/sign-up", {
+    return fetch(BASE_URL + "/api/auth/sign-up", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
   "auth/login",
   (userData, thunkAPI) => {
-    return fetch("http://localhost:4000/api/auth/sign-in", {
+    return fetch(BASE_URL + "/api/auth/sign-in", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
