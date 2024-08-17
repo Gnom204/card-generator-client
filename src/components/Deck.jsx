@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchGetCards } from "../store/features/card/cardSlice";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,8 @@ import {
 } from "../store/features/lesson/lessonSlice";
 
 function Deck({ deck }) {
+  const [isHidden, setIsHidden] = useState(true);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,7 +37,7 @@ function Deck({ deck }) {
     <>
       <div
         onClick={clickHandler}
-        className="w-64 h-96 mx-2 my-2 cursor-pointer  justify-center hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 flex flex-col rounded-lg border border-gray-200 shadow-md p-4"
+        className="min-w-64 min-h-96 mx-2 my-2 cursor-pointer  justify-center hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 flex flex-col rounded-lg border border-gray-200 shadow-md p-4"
       >
         <img
           src={BASE_URL + "/uploads/" + deck.preview}
@@ -43,7 +45,18 @@ function Deck({ deck }) {
           className="w-full h-48 mb-4 object-cover rounded-t-lg"
         />
         <div className="flex flex-col">
-          <h2 className="w-40 text-xl font-semibold mb-2">{deck.lessonName}</h2>
+          <h2 className="w-40 text-ellipsis text-xl font-semibold mb-2">
+            {isHidden ? deck.lessonName.slice(0, 10) + "..." : deck.lessonName}
+          </h2>
+          <p
+            className="text-blue-400 underline"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsHidden(!isHidden);
+            }}
+          >
+            {isHidden ? "Подробнее" : "Скрыть"}
+          </p>
           <p className="text-gray-600 mb-2">Language: {deck.language}</p>
           <p className="text-gray-600 mb-2">
             Private: {deck.isPrivate ? "Yes" : "No"}

@@ -1,4 +1,6 @@
-export const BASE_URL = "http://92.255.111.113";
+export const BASE_URL = "http://localhost:4000";
+
+//http://92.255.111.113
 
 export const languages = [
   "Африканский",
