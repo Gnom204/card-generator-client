@@ -24,7 +24,7 @@ function ListOfOtherLessons() {
       {otherLessons && (
         <ul className="flex items-center justify-center flex-wrap w-11З/12">
           {otherLessons.cards.map((deck) => (
-            <Deck key={deck._id} deck={deck} />
+            <Deck other={true} key={deck._id} deck={deck} />
           ))}{" "}
         </ul>
       )}

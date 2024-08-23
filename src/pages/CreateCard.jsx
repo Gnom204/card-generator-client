@@ -160,7 +160,7 @@ function CreateCard() {
               className="block text-gray-700 text-sm font-bold my-2"
               htmlFor="isPrivate"
             >
-              Публичная
+              Сделать приватной
             </label>
             <input
               value={isPrivate}

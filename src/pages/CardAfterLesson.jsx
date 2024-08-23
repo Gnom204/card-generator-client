@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import Deck from "../components/Deck";
 import DefaultCardWithInput from "../components/DefaultCardWithInput";
 
-function CardAfterLesson() {
+function CardAfterLesson({ other }) {
   const { lessonId } = useParams();
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.cards);
@@ -57,12 +57,14 @@ function CardAfterLesson() {
           </>
         ))} */}
       <div className="flex items-center justify-center space-x-4">
-        <button
-          onClick={clickHandler}
-          className="px-4 py-2 bg-sky-600 rounded-md text-white transition-colors hover:bg-sky-700"
-        >
-          Добавить карточки
-        </button>
+        {!other && (
+          <button
+            onClick={clickHandler}
+            className="px-4 py-2 bg-sky-600 rounded-md text-white transition-colors hover:bg-sky-700"
+          >
+            Добавить карточки
+          </button>
+        )}
         <NavLink to={"/learn-room/" + lessonId}>
           <button className="px-4 py-2 bg-green-600 rounded-md text-white transition-colors hover:bg-green-700">
             Запустить Изучение

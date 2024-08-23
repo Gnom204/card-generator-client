@@ -130,7 +130,13 @@ function LearnRoom() {
             <div className="flex flex-col items-center">
               <div className="relative">
                 <img
-                  src={BASE_URL + "/uploads/" + currentCard.image}
+                  src={
+                    BASE_URL +
+                    (process.env.NODE_ENV === "production"
+                      ? "/uploads/"
+                      : "/") +
+                    currentCard.image
+                  }
                   alt={currentCard.name}
                   className="w-96 h-96 object-cover rounded-lg shadow-md"
                 />

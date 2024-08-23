@@ -88,7 +88,13 @@ function DefaultCardWithInput({ card }) {
       <div>
         {preview || card.image ? (
           <img
-            src={card.image ? BASE_URL + "/uploads/" + card.image : preview}
+            src={
+              card.image
+                ? BASE_URL +
+                  (process.env.NODE_ENV === "production" ? "/uploads/" : "/") +
+                  card.image
+                : preview
+            }
             alt="card"
             className="w-24 h-24"
           />

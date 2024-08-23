@@ -9,7 +9,7 @@ import {
   fetchGetLessons,
 } from "../store/features/lesson/lessonSlice";
 
-function Deck({ deck }) {
+function Deck({ deck, other }) {
   const [isHidden, setIsHidden] = useState(true);
 
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ function Deck({ deck }) {
       .catch((error) => {
         console.log({ error });
       });
-    navigate("lesson/" + deck._id);
+    navigate("lesson/" + deck._id + (other ? "/other" : ""));
   };
 
   return (
@@ -40,13 +40,19 @@ function Deck({ deck }) {
         className="min-w-64 min-h-96 mx-2 my-2 cursor-pointer  justify-center hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 flex flex-col rounded-lg border border-gray-200 shadow-md p-4"
       >
         <img
-          src={BASE_URL + "/uploads/" + deck.preview}
-          alt={deck.lessonName}
+          src={
+            BASE_URL +
+            (process.env.NODE_ENV === "production" ? "/uploads/" : "/") +
+            deck.preview
+          }
+          alt={"Картинка с названием: " + deck.lessonName}
           className="w-full h-48 mb-4 object-cover rounded-t-lg"
         />
         <div className="flex flex-col">
           <h2 className="w-40 text-ellipsis text-xl font-semibold mb-2">
-            {isHidden ? deck.lessonName.slice(0, 10) + "..." : deck.lessonName}
+            {deck.lessonName.length > 10 && isHidden
+              ? deck.lessonName.slice(0, 10) + "..."
+              : deck.lessonName}
           </h2>
           <p
             className="text-blue-400 underline"
@@ -55,19 +61,21 @@ function Deck({ deck }) {
               setIsHidden(!isHidden);
             }}
           >
-            {isHidden ? "Подробнее" : "Скрыть"}
+            {deck.lessonName.length > 10 && (isHidden ? "Подробнее" : "Скрыть")}
           </p>
           <p className="text-gray-600 mb-2">Language: {deck.language}</p>
           <p className="text-gray-600 mb-2">
             Private: {deck.isPrivate ? "Yes" : "No"}
           </p>
         </div>
-        <img
-          onClick={deleteDeck}
-          className="w-6 z-10 m-auto"
-          src={trash}
-          alt=""
-        />
+        {!other && (
+          <img
+            onClick={deleteDeck}
+            className="w-6 z-10 m-auto"
+            src={trash}
+            alt=""
+          />
+        )}
       </div>
     </>
   );
