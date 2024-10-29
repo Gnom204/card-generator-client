@@ -24,7 +24,7 @@ function ListOfLessons() {
   return (
     <>
       {decks && (
-        <ul className="flex items-center justify-center flex-wrap w-11З/12">
+        <ul className="flex items-center justify-center m-0 flex-wrap w-11З/12">
           {decks.cardsWithLang.map((deck) => (
             <Deck other={false} key={deck._id} deck={deck} />
           ))}{" "}

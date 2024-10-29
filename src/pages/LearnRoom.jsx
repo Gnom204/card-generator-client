@@ -52,7 +52,7 @@ function LearnRoom() {
     }
     console.log(card);
     setIsDisabled(false);
-    if (card.translate.toLowerCase() === translateVariant.toLowerCase()) {
+    if (card.translate.toLowerCase().split(" ").join("") === translateVariant.toLowerCase().split(" ").join("")) {
       setCheckDisabled(true);
       setIsGo(true);
       // console.log("correct");
@@ -103,13 +103,13 @@ function LearnRoom() {
     console.log(isEntered, "clickHandler");
   };
   return (
-    <div className="flex items-center justify-center flex-col min-h-screen py-8 bg-gray-50">
+    <div className="flex items-center justify-center flex-col min-h-screen py-8 ">
       {isWin ? (
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-3xl font-bold mb-4">
+          <h1 className="text-primary text-3xl font-bold mb-4">
             Вы выучили все карточки👏👏👏
           </h1>
-          <p className="text-lg">Количество ошибок: {errorCounter}</p>
+          <p className="text-lg text-white my-2">Количество ошибок: {errorCounter}</p>
           <button
             onClick={() => navigate("/")}
             className="text-lg px-6 py-3 bg-blue-600 rounded-md text-white transition duration-150 ease-in-out hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-800"
@@ -155,7 +155,7 @@ function LearnRoom() {
                   </>
                 ) : null}
               </div>
-              <h2 className="text-3xl font-bold mt-4">{currentCard.name}</h2>
+              <h2 className="text-3xl text-primary font-bold mt-4">{currentCard.name}</h2>
             </div>
           )}
           <form

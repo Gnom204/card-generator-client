@@ -2,15 +2,13 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getIsAuth, logout } from "../store/features/auth/authSlice";
-
 function Header() {
   const dispatch = useDispatch();
   const isAuth = useSelector(getIsAuth);
-
   return (
-    <header className="bg-sky-50">
+    <header className="z-10">
       <nav className="p-4 flex justify-between items-center">
-        <div className="text-xl font-bold text-sky-600">
+        <div className='text-xl font-bold text-primary'>
           <NavLink className="cursor-pointer" to="/">
             <h1>Карточки со словами</h1>
           </NavLink>
@@ -19,19 +17,19 @@ function Header() {
           {isAuth ? (
             <button
               onClick={() => dispatch(logout())}
-              className="px-4 py-2 bg-sky-600 rounded-md text-white transition-colors hover:bg-sky-700"
+              className="px-10 py-2 bg-primary rounded-md text-secondary transition-colors  hover:bg-gray-200"
             >
               Выйти
             </button>
           ) : (
             <>
               <NavLink to="login">
-                <button className="px-4 py-2 bg-sky-600 rounded-md text-white transition-colors hover:bg-sky-700">
+                <button className="px-10 py-2 bg-primary rounded-md text-secondary transition-colors  hover:bg-gray-200">
                   Вход
                 </button>
               </NavLink>
               <NavLink to="register">
-                <button className="px-4 py-2 bg-sky-600 rounded-md text-white transition-colors hover:bg-sky-700">
+                <button className="px-10 py-2 bg-primary rounded-md text-secondary transition-colors hover:bg-gray-200">
                   Регистрация
                 </button>
               </NavLink>

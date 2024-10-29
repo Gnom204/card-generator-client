@@ -43,7 +43,6 @@ function CardAfterLesson({ other }) {
         addedCards.map((card, index) => (
           <>
             <DefaultCardWithInput card={card} key={index} />
-            {console.log({ card })}
           </>
         ))
       ) : (

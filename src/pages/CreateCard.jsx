@@ -23,7 +23,11 @@ function CreateCard() {
   const preview = useSelector((state) => state.preview);
   const isLoading = useSelector((state) => state.preview.isLoading);
   const dispatch = useDispatch();
-
+  const languageList =  languages.map((language) => (
+  <option key={language} value={language}>
+    {language}
+  </option>
+))
   const navigate = useNavigate();
 
   const clickHandler = (e) => {
@@ -70,7 +74,7 @@ function CreateCard() {
 
   return (
     <div className="max-w-md mx-auto flex-grow">
-      <h1 className="text-3xl font-bold mb-4">Создание карточки</h1>
+      <h1 className="text-3xl text-primary font-bold mb-4">Создание карточки</h1>
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -187,11 +191,7 @@ function CreateCard() {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             >
               <option value="">Выберите язык</option>
-              {languages.map((language) => (
-                <option key={language} value={language}>
-                  {language}
-                </option>
-              ))}
+             {languageList}
             </select>
             {languageNull && <p className="text-red-600">Выберите язык</p>}
           </div>

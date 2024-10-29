@@ -16,10 +16,12 @@ function Layout() {
   return (
     <>
       <Header />
-      <div className="flex-grow">
+      <div className=" flex-grow bg-[#1E1E1E]">
+        <div className=" h-96 w-96 rounded-full absolute top-[20%] left-[80%]  opacity-70 z-0 blur-3xl bg-[#FDC959B2]"></div>
         <Outlet />
       </div>
-      <Footer />
+      <div className="h-96 w-96 rounded-full absolute top-[80%] left-[-20%] opacity-70 z-0 blur-3xl bg-[#FD5E0AB2]"></div>
+      {/* <Footer /> */}
     </>
   );
 }

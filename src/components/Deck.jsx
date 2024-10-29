@@ -37,7 +37,7 @@ function Deck({ deck, other }) {
     <>
       <div
         onClick={clickHandler}
-        className="min-w-64 min-h-96 mx-2 my-2 cursor-pointer  justify-center hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 flex flex-col rounded-lg border border-gray-200 shadow-md p-4"
+        className="z-10 bg-primary text-secondary min-w-64 min-h-[22rem] mx-2 my-2 cursor-pointer  justify-center hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 flex flex-col rounded-lg border border-gray-200 shadow-md p-4"
       >
         <img
           src={
@@ -46,7 +46,7 @@ function Deck({ deck, other }) {
             deck.preview
           }
           alt={"Картинка с названием: " + deck.lessonName}
-          className="w-full h-48 mb-4 object-cover rounded-t-lg"
+          className="w-full h-44 mb-3 object-cover rounded-t-lg"
         />
         <div className="flex flex-col">
           <h2 className="w-40 text-ellipsis text-xl font-semibold mb-2">
@@ -63,9 +63,9 @@ function Deck({ deck, other }) {
           >
             {deck.lessonName.length > 10 && (isHidden ? "Подробнее" : "Скрыть")}
           </p>
-          <p className="text-gray-600 mb-2">Language: {deck.language}</p>
+          <p className="text-gray-600 mb-2 w-40">Язык: {deck.language}</p>
           <p className="text-gray-600 mb-2">
-            Private: {deck.isPrivate ? "Yes" : "No"}
+            {deck.isPrivate ? "Приватная" : "Публичная"}
           </p>
         </div>
         {!other && (
