@@ -54,7 +54,7 @@ function DefaultCardWithInput({ card }) {
     setTransIsDisabled(!transIsDisabled);
   };
   return (
-    <div className="flex bg-primary text-secondary gap-4 items-center shadow-md p-4 mb-6 w-">
+    <div className="z-10 flex bg-primary text-secondary gap-4 items-center shadow-md p-4 mb-6 w-">
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2 cursor-pointer">
           <input

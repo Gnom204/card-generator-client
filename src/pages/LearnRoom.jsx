@@ -127,7 +127,7 @@ function LearnRoom() {
       ) : (
         <div className="flex flex-col items-center space-y-4">
           {currentCard && (
-            <div className="flex flex-col items-center">
+            <div className="z-10 flex flex-col items-center">
               <div className="relative">
                 <img
                   src={
@@ -159,7 +159,7 @@ function LearnRoom() {
             </div>
           )}
           <form
-            className="space-y-4"
+            className="space-y-4 z-10"
             onSubmit={isEntered ? () => getNextCard() : (e) => clickHandler(e)}
           >
             <input
