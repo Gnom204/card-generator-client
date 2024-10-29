@@ -73,11 +73,11 @@ function CreateCard() {
   };
 
   return (
-    <div className="max-w-md mx-auto flex-grow">
+    <div className="z-10 max-w-md mx-auto flex-grow">
       <h1 className="text-3xl text-primary font-bold mb-4">Создание карточки</h1>
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="z-10 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
         <div className="flex flex-col items-center justify-center border-4 p-10 border-dashed">
           {isLoading ? (
