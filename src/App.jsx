@@ -34,7 +34,7 @@ function App() {
           <div className="flex items-center space-x-4 flex-wrap mb-36">
             <ListOfLessons />
           </div>
-          <h2 className="text-2xl font-medium">Колоды работяг</h2>
+          <h2 className="z-10 text-2xl font-medium">Колоды работяг</h2>
           
           {<select
               onChange={(e) => {
