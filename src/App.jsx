@@ -30,7 +30,7 @@ function App() {
       {isAuth ? (
         <>
           {user && <p className="text-xl">Здравствуйте, {user.name}👋</p>}
-          <h2 className="text-2xl font-medium">Ваши Колоды</h2>
+          <h2 className="z-10 text-2xl font-medium">Ваши Колоды</h2>
           <div className="flex items-center space-x-4 flex-wrap mb-36">
             <ListOfLessons />
           </div>
@@ -46,7 +46,7 @@ function App() {
               <option value="">Выберите язык</option>
              {languageList}
             </select>}
-            <button onClick={() => setCurrentLanguage('')} className="text-xs font-medium text-white bg-gray-700 px-2 py-1 rounded-md hover:bg-gray-800">Сбросить</button>
+            <button onClick={() => setCurrentLanguage('')} className="z-10 text-xs font-medium text-white bg-gray-700 px-2 py-1 rounded-md hover:bg-gray-800">Сбросить</button>
           <div className="flex items-center space-x-4 flex-wrap">
             <ListOfOtherLessons currentLanguage={currentLanguage} />
           </div>
