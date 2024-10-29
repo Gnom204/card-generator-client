@@ -20,12 +20,15 @@ function ListOfOtherLessons({currentLanguage}) {
   }, []);
 
   useEffect(() => {
+    if(otherLessons) {
+      
     if(currentLanguage !== '') {
       filterCards(currentLanguage)
       console.log(currentLanguage)
     } else {
       setFilteredCards(otherLessons.cards)
     }
+  }
   }, [currentLanguage])
 
 function filterCards(language) {
