@@ -13,7 +13,7 @@ export const generatePreview = createAsyncThunk(
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({ prompt }),
-      timeout: 120000,
+      timeout: 220000,
     })
       .then((response) => {
         if (!response.ok) {
