@@ -26,7 +26,7 @@ function App() {
   }, []);
 
   return (
-    <div className="z-10 px-4 text-primary flex-grow">
+    <div className="relative z-10 px-4 text-primary flex-grow">
       {isAuth ? (
         <>
           {user && <p className="text-xl">Здравствуйте, {user.name}👋</p>}
@@ -41,7 +41,7 @@ function App() {
                setCurrentLanguage(e.target.value);
               }}
               id="language"
-              className="z-10 w-30 mt-1 block text-black rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className=" z-10 w-30 mt-1 block text-black rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             >
               <option value="">Выберите язык</option>
              {languageList}

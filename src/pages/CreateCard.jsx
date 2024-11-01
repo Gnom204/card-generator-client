@@ -73,7 +73,7 @@ function CreateCard() {
   };
 
   return (
-    <div className="z-10 max-w-md mx-auto flex-grow">
+    <div className="relative z-10 max-w-md mx-auto flex-grow">
       <h1 className="text-3xl text-primary font-bold mb-4">Создание карточки</h1>
       <form
         onSubmit={handleSubmit}
@@ -83,7 +83,7 @@ function CreateCard() {
           {isLoading ? (
             <Loader
               msg={
-                "Ждем пока Индусы нарисуют превью. Примерное время ожидания: 40 секунд"
+                "Ждем пока нейросеть нарисуют превью. Примерное время ожидания: 40 секунд"
               }
             />
           ) : preview.preview !== null ? (
